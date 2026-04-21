@@ -1,0 +1,9 @@
+# Python tempo files
+__pycache__/
+.venv/
+venv/
+env/
+
+library_db.log
+__init__.py
+
