@@ -1,6 +1,12 @@
-import psycopg2
+import psycopg2 
 import logging
 from abc import ABC, abstractmethod
+# import sqlalchemy as db
+
+# engine = db.create_engine(
+#     f'postgresql+psycopg2://postgres:{DB_PASSWORD}@localhost:5432/{Database_name}'
+# )
+
 
 conn = psycopg2.connect(
     database="Library_management",

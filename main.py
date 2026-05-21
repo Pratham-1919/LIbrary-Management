@@ -1,4 +1,3 @@
-import logger
 from models.User import Managemember
 from models.Author import Authormanager
 from models.Books import BookManager
@@ -39,7 +38,7 @@ def add_new_book():
     # Check if author exists, if not, add them
     author_data = author_manager.search_author(author_name)
     if author_data:
-        author_id = author_data[0]
+        author_id = author_data.author_id
     else:
         print(f"Author '{author_name}' not found. Adding as a new author.")
         author_id = author_manager.add_author(author_name)

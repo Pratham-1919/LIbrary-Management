@@ -2,6 +2,18 @@ from database.database import cursor,psycopg2,conn
 from logger import logger
 
 
+# from sqlalchemy import Column, Integer, String, Boolean
+
+# class User(Base):
+#     __tablename__ = "user"
+
+#     user_id = Column(Integer, primary_key=True)
+#     first_name = Column(String(50))
+#     last_name = Column(String(50))
+#     email = Column(String(100), unique=True)
+#     online = Column(Boolean)
+
+
 
 
 def create_table():
@@ -35,7 +47,6 @@ def create_table():
             status BOOLEAN DEFAULT TRUE,
             FOREIGN KEY (author_id) REFERENCES author (author_id)
         );
-
     """
     ,
     """
@@ -70,7 +81,7 @@ def create_table():
         logger.info("Connection successful: ")
         conn.commit()
         
-
+    
     except(Exception, psycopg2.DatabaseError) as error:
         if conn:
             conn.rollback()
