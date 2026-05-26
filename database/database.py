@@ -1,6 +1,12 @@
-import psycopg2
+import psycopg2 
 import logging
 from abc import ABC, abstractmethod
+# import sqlalchemy as db
+
+# engine = db.create_engine(
+#     f'postgresql+psycopg2://postgres:{DB_PASSWORD}@localhost:5432/{Database_name}'
+# )
+
 
 conn = psycopg2.connect(
     database="Library_management",
@@ -16,10 +22,11 @@ class BaseManager(ABC):
     """
     Abstract base class providing encapsulation for database operations.
     """
-    def __init__(self):
+    def __init__(self, db_session=None):
         self._conn = conn
         self._cursor = cursor
         self._logger = logging.getLogger(self.__class__.__name__)
+        self.db = db_session
 
     def _execute_query(self, query, params=None, fetchone=False, fetchall=False, commit=False):
         """Protected method encapsulating cursor execution and error handling."""
